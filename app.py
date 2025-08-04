@@ -1563,7 +1563,7 @@ def get_form_data():
 
 # --- CORS Handling ---
 # (CORS setup remains the same)
-YOUR_EXTENSION_ID = os.environ.get("CHROME_EXTENSION_ID", "YOUR_EXTENSION_ID_HERE") # Replace placeholder if needed
+YOUR_EXTENSION_ID = "YOUR_EXTENSION_ID_HERE" # Replace placeholder if needed
 if YOUR_EXTENSION_ID == "YOUR_EXTENSION_ID_HERE":
     print("\n*********************************************************************")
     print("WARNING: CHROME_EXTENSION_ID is not set in environment variables.")
