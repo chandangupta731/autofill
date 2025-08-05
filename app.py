@@ -36,7 +36,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # --- Configuration ---
-UPLOAD_FOLDER = os.path.join('/var/data', 'uploads')
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'docx'}
 # ***** IMPORTANT: Use environment variables for sensitive keys in production *****
 API_KEY = os.environ.get("GEMINI_API_KEY") # Replace placeholder if needed
