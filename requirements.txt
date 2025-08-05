@@ -79,4 +79,8 @@ typing-inspection
 typing_extensions
 uritemplate
 urllib3
+<<<<<<< HEAD
 Werkzeug
+=======
+Werkzeug
+>>>>>>> 9a229b6fa5dcf51630ddc89ec7f6cddff232cf61
