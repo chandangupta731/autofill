@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "MongoDB Form Filler (Auto-Trigger)",
+  "version": "1.1",
+  "description": "Autofills web forms using stored user data, triggered on page load.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://ceac.state.gov/GenNIV/*",
+    "http://localhost:5000/*",
+    "https://www.usvisascheduling.com/en-US/applicant_details/GenNIV/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}

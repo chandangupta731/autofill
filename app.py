@@ -256,7 +256,7 @@ def find_passport_no_in_text(text_content):
         print("Skipping passport number search: No text content provided.")
         return None
     # Pattern: Letter followed by 7 digits, allowing optional space after letter
-    pattern = re.compile(r'\b([A-Z]\s?\d{7})\b', re.IGNORECASE)
+    pattern = re.compile(r'\b([A-Z]\s?\d{7}|[A-Z]{2}\s?\d{6})\b', re.IGNORECASE)
     # Find all matches and sort by position
     matches = sorted(pattern.finditer(text_content), key=lambda m: m.start())
     if matches:
@@ -320,7 +320,7 @@ def detect_document_type(text_content):
 
     # Regular expressions for typical ID patterns
     # Passport MRZ-like pattern (Letter followed by 7 digits, optional space)
-    passport_pattern = re.compile(r'\b([A-Z]\s?\d{7})\b', re.IGNORECASE)
+    passport_pattern = re.compile(r'\b([A-Z]\s?\d{7}|[A-Z]{2}\s?\d{6})\b', re.IGNORECASE)
     # Aadhaar pattern (12 digits, possibly with spaces)
     aadhaar_pattern = re.search(r'\b\d{4}\s?\d{4}\s?\d{4}\b', text_lower)
 
@@ -368,7 +368,7 @@ def find_and_redact_passport_no(text):
 
     # Current pattern: A letter, an optional space, 7 digits, followed by a word boundary. Case-insensitive.
     # Leading \b was removed in a previous iteration to allow matching if stuck to preceding word characters.
-    pattern = re.compile(r'([A-Z]\s?\d{7})\b', re.IGNORECASE)
+    pattern = re.compile(r'\b([A-Z]\s?\d{7}|[A-Z]{2}\s?\d{6})\b', re.IGNORECASE)
 
     found_number = None
     redacted_text = text
@@ -427,7 +427,7 @@ def find_and_redact_passport_no(text):
         # Debug Step 4: Check if the *original strict pattern* (with both \b) would have matched anything
         # This helps understand if the previous iteration's change (removing leading \b) was relevant
         # or if the problem is more fundamental.
-        original_strict_pattern = re.compile(r'\b([A-Z]\s?\d{7})\b', re.IGNORECASE)
+        original_strict_pattern = re.compile(r'\b([A-Z]\s?\d{7}|[A-Z]{2}\s?\d{6})\b', re.IGNORECASE)
         strict_matches = list(original_strict_pattern.finditer(text))
         if strict_matches:
             print(f"DEBUG: The original stricter pattern r'\\b([A-Z]\\s?\\d{{7}})\\b' WOULD have found {len(strict_matches)} match(es). This implies the context around the number might be tricky for word boundaries.")
