@@ -2,7 +2,7 @@ Flask
 Flask-Cors
 pymongo
 python-docx
-paddlepaddle==2.6.1
-paddleocr==2.7.3
+paddlepaddle
+paddleocr
 google-generativeai
 python-dotenv
