@@ -280,7 +280,7 @@ def extract_text_paddle(image_path, lang='en'):
     try:
         # Initialize PaddleOCR (consider making this a global instance if performance is critical)
         # use_gpu=False is safer for general compatibility
-        ocr_engine = PaddleOCR(use_angle_cls=True, lang=lang, use_gpu=False, show_log=False)
+        ocr_engine = PaddleOCR(use_textline_orientation=True, lang=lang, use_gpu=False, show_log=False)
         # Perform OCR
         result = ocr_engine.ocr(image_path, cls=True)
         extracted_text = ""
